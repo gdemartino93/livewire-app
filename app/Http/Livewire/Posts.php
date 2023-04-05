@@ -10,7 +10,13 @@ class Posts extends Component
     public $title;
     public $body;
 
+    protected $rules=[
+        'title' => 'required|min:1|max:10',
+        'body' => 'required',
+    ];
+
     public function createPost(){
+        $this->validate();
         Post::create([
             'title' => $this->title,
             'body' => $this->body,
