@@ -9,29 +9,29 @@ class Posts extends Component
 {
     public $title;
     public $body;
-
-    protected $rules=[
-        'title' => 'required|min:1|max:10',
-        'body' => 'required',
-    ];
+    public $color;
 
     public function createPost(){
         $this->validate([
             'title' => 'required|min:1|max:10',
             'body' => 'required',
         ],[
-            'body.required' => 'Il testo è obbligatorio'
+            'body.required' => 'Il testo è obbligatorio',
+            'title.required' => 'Il titolo è obbligatorio'
         ]);
-
+        
         Post::create([
             'title' => $this->title,
             'body' => $this->body,
+            'color' => $this->color,
         ]);
         $this->clearForm();
     }
     public function clearForm(){
         $this->title = '';
         $this->body = '';
+        $this->color = null;
+    
     }
 
     public function render()

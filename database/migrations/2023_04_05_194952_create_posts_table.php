@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table -> string('title',10);
             $table -> string('body');
+            $table -> string('color')->nullable();
             $table->timestamps();
         });
     }
