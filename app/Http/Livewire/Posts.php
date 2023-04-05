@@ -16,7 +16,13 @@ class Posts extends Component
     ];
 
     public function createPost(){
-        $this->validate();
+        $this->validate([
+            'title' => 'required|min:1|max:10',
+            'body' => 'required',
+        ],[
+            'body.required' => 'Il testo è obbligatorio'
+        ]);
+
         Post::create([
             'title' => $this->title,
             'body' => $this->body,

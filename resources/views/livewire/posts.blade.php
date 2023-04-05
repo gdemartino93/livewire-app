@@ -11,10 +11,11 @@
               </div>
               <div class="mb-3">
                 <label for="body" class="form-label">Inserisci il testo</label>
-                <textarea wire:model='body' class="form-control" rows="3"></textarea>
+                {{-- mostra l'errore sulle validazioni --}}
                 @if ($errors -> has('body'))    
-                    <div class="alert alert-danger">{{ $errors->first('body') }}</div>
+                <div class="alert alert-danger">{{ $errors->first('body') }}</div>
                 @endif
+                <textarea wire:model='body' class="form-control" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Pubblica</button>
         </form>
