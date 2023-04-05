@@ -36,16 +36,21 @@
     </div>
     <section class="my-5">
         <div class="row justify-content-evenly">
+
             @foreach ($posts as $post)
+            
             <div class="card bg-{{ $post -> color ?? 'primary' }} mb-3" style="max-width: 18rem;">
-                <div class="card-header">{{ Str::ucfirst($post -> title) }}</div>
-                <div class="card-body">
-                  <p class="card-text">
-                    {{ $post -> body }}
-                  </p>
+                <div class="card-header">
+                    <i class="fa-solid fa-trash" wire:click='deletePost({{ $post->id }})'></i>
                 </div>
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">{{ $post -> title }}</h5>
+                  <p class="card-text fw-bold">{{ $post -> body }}</p>
+                </div>
+              
               </div>      
             @endforeach
+
         </div>
     </section>
 </div>

@@ -27,6 +27,11 @@ class Posts extends Component
         ]);
         $this->clearForm();
     }
+
+    public function deletePost($id){
+        Post::find($id) -> delete();
+    }
+
     public function clearForm(){
         $this->title = '';
         $this->body = '';
