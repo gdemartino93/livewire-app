@@ -28,4 +28,7 @@ class Posts extends Component
             'posts' => Post::all()
         ]);
     }
+    public function getTitleLengthProperty(){
+        return strlen($this->title);
+    }
 }

@@ -2,11 +2,15 @@
     <div class="row">
         <form wire:submit.prevent='createPost' action="" class="col-12 col-md-8 col-lg-6 mx-auto">
             <div class="mb-3">
-                <label for="title" class="form-label">Titolo</label>
+                <label for="title" class="form-label">Inserisci il titolo(max 10 caratteri)</label>
                 <input wire:model='title' type="text" class="form-control" placeholder="Inserisci il titolo">
+                <span class={{ $this->titleLength > 10 ? 'text-danger' : 'text-success' }}>{{ $this->titleLength }}/10</span>
+                @if ($this->titleLength > 10)
+                    <span class="text-danger">Hai superato i caratteri consentiti</span>
+                @endif
               </div>
               <div class="mb-3">
-                <label for="body" class="form-label">Example textarea</label>
+                <label for="body" class="form-label">Inserisci il testo</label>
                 <textarea wire:model='body' class="form-control" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Pubblica</button>
