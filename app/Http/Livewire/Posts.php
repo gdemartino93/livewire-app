@@ -15,10 +15,17 @@ class Posts extends Component
             'title' => $this->title,
             'body' => $this->body,
         ]);
+        $this->clearForm();
     }
-    
+    public function clearForm(){
+        $this->title = '';
+        $this->body = '';
+    }
+
     public function render()
     {
-        return view('livewire.posts');
+        return view('livewire.posts',[
+            'posts' => Post::all()
+        ]);
     }
 }
