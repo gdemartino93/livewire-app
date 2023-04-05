@@ -12,4 +12,18 @@
             <button type="submit" class="btn btn-primary">Pubblica</button>
         </form>
     </div>
+    <section class="my-5">
+        <div class="row justify-content-evenly">
+            @foreach ($posts as $post)
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{ Str::ucfirst($post -> title) }}</div>
+                <div class="card-body">
+                  <p class="card-text">
+                    {{ $post -> body }}
+                  </p>
+                </div>
+              </div>      
+            @endforeach
+        </div>
+    </section>
 </div>
