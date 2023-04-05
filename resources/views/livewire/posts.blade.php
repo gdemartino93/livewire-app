@@ -12,6 +12,9 @@
               <div class="mb-3">
                 <label for="body" class="form-label">Inserisci il testo</label>
                 <textarea wire:model='body' class="form-control" rows="3"></textarea>
+                @if ($errors -> has('body'))    
+                    <div class="alert alert-danger">{{ $errors->first('body') }}</div>
+                @endif
             </div>
             <button type="submit" class="btn btn-primary">Pubblica</button>
         </form>
