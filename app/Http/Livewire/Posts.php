@@ -12,23 +12,28 @@ class Posts extends Component
     public $title;
     public $body;
     public $color;
-    public $photo;
+    public $photos = [];
 
     public function createPost(){
         $this->validate([
             'title' => 'required|min:1|max:10',
             'body' => 'required',
-            'photo' => 'image|max:1024'
+            'photos.*' => 'image|max:1024'
         ],[
             'body.required' => 'Il testo è obbligatorio',
             'title.required' => 'Il titolo è obbligatorio',
         ]);
-        $this->photo -> store('images');
+
+        foreach($this->photos as $photo){
+            $photo -> store('images');
+           
+        };
+
         Post::create([
             'title' => $this->title,
             'body' => $this->body,
             'color' => $this->color,
-            'photo' => $this->photo
+            'photos' => $photo
         ]);
         $this->clearForm();
     }
@@ -41,7 +46,7 @@ class Posts extends Component
         $this->title = '';
         $this->body = '';
         $this->color = null;
-        $this->photo = "";
+        $this->photos = null;
     
     }
 

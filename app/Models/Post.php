@@ -13,6 +13,6 @@ class Post extends Model
         'title',
         'body',
         'color',
-        'photo'
+        'photos'
     ];
 }
