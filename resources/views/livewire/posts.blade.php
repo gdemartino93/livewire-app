@@ -1,15 +1,21 @@
 <div class="container mywrapper">
     <div class="row">   
-        @if (session()->has('message'))
-
+        {{-- mostra flash message post creato --}}
+        @if (session()->has('created'))
             <div class="alert alert-success">
-
-                {{ session('message') }}
-
+                {{ session('created') }}
             </div>
-
         @endif
-        asd
+        @if (session()->has('deleted'))
+            <div class="alert alert-danger">
+                {{ session('deleted') }}
+            </div>
+        @endif
+        @if (session()->has('tempDeleted'))
+            <div class="alert alert-danger">
+                {{ session('tempDeleted') }}
+            </div>
+        @endif
         <form wire:submit.prevent='createPost' action="" class="col-12 col-md-8 col-lg-6 mx-auto" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Inserisci il titolo(max 10 caratteri)</label>
@@ -46,9 +52,6 @@
                     </div>
                     @endif
                 @endif
-
-
-                
               </div>
               
             <select wire:model='color' class="form-select form-select-sm" aria-label=".form-select-sm example">

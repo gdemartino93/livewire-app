@@ -39,15 +39,17 @@ class Posts extends Component
             'photos' => $this->photos ?: null
         ]);
         $this->clearForm();
-        session()->flash('message', 'Post successfully updated.');
+        session()->flash('created', 'Post aggiunto!');
     }
 
     public function deletePost($id){
         Post::find($id) -> delete();
+        session()->flash('deleted', 'Post cancellato!');
     }
     public function removeTempImg($index){
 
         array_splice($this->photos, $index,1);
+        session()->flash('tempDeleted', 'Foto cancellata!');
     }
     public function clearForm(){
         $this->title = '';
