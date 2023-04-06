@@ -1,21 +1,13 @@
 <div class="container mywrapper">
     <div class="row">   
         {{-- mostra flash message post creato --}}
-        @if (session()->has('created'))
-            <div class="alert alert-success">
-                {{ session('created') }}
-            </div>
-        @endif
-        @if (session()->has('deleted'))
-            <div class="alert alert-danger">
-                {{ session('deleted') }}
-            </div>
-        @endif
-        @if (session()->has('tempDeleted'))
-            <div class="alert alert-danger">
-                {{ session('tempDeleted') }}
-            </div>
-        @endif
+        @foreach ($alerts as $key => $alert)
+            @if (session()->has($key))
+                <div class="alert alert-{{ $alert[0] }}">
+                    {{ session($key) }}
+                </div>
+            @endif
+        @endforeach
         <form wire:submit.prevent='createPost' action="" class="col-12 col-md-8 col-lg-6 mx-auto" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Inserisci il titolo(max 10 caratteri)</label>

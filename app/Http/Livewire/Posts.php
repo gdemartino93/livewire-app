@@ -13,6 +13,11 @@ class Posts extends Component
     public $body;
     public $color;
     public $photos = [];
+    public $alerts = [
+        'created' => ['success', ''],
+        'deleted' => ['danger', ''],
+        'tempDeleted' => ['danger', '']
+    ];
 
     public function createPost(){
         $this->validate([
