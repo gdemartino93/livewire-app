@@ -31,11 +31,11 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Carica le foto</label>
-                <input wire:model='photos' class="form-control" type="file" id="formFile" multiple>
-                @if ($photos)                      
-                    @if (count($photos) > 0)
+                <input wire:model='uploadedPhotos' class="form-control" type="file" id="formFile" multiple>
+                @if ($uploadedPhotos)                      
+                    @if (count($uploadedPhotos) > 0)
                     <div class="box">
-                        @foreach ($photos as $photo)
+                        @foreach ($uploadedPhotos as $photo)
                         <div class="box-img-temp">
                             <img src="{{ $photo -> temporaryUrl() }}" class="_thumbnail" width="100%">
                             <i class="fa-regular fa-circle-xmark" wire:click.prevent="removeTempImg({{ $loop -> index }})"></i>
@@ -77,7 +77,7 @@
               
               </div>      
             @endforeach
-
+            {{ $posts->links() }}
         </div>
     </section>
 </div>
