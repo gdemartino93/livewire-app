@@ -27,11 +27,16 @@
                 @if (count($photos) > 0)
                 <div class="box">
                     @foreach ($photos as $photo)
-                        <img src="{{ $photo-> temporaryUrl() }}" class="_thumbnail" width="100%">
+                    <div class="box-img-temp">
+                        <img src="{{ $photo -> temporaryUrl() }}" class="_thumbnail" width="100%">
+                        <i class="fa-regular fa-circle-xmark" wire:click.prevent="removeTempImg({{ $loop -> index }})"></i>
+                    </div>
                     @endforeach
                 </div>
                 @endif
 
+
+                
               </div>
               
             <select wire:model='color' class="form-select form-select-sm" aria-label=".form-select-sm example">

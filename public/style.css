@@ -4,8 +4,9 @@
     box-sizing: border-box;
 }
 ._thumbnail{
-    width: 200px;
-    height: 150px;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 .box{
     margin-top: 30px;
@@ -17,4 +18,27 @@
 }
 .box img{
     margin: 5px auto;
+    position: relative;
+}
+
+.box-img-temp{
+    width: 200px;
+    height: 150px;
+    
+}
+.box-img-temp i{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+.box-img-temp:hover{
+    filter: grayscale()
+}
+.box-img-temp:hover i{
+   display: block;
 }

@@ -41,7 +41,10 @@ class Posts extends Component
     public function deletePost($id){
         Post::find($id) -> delete();
     }
+    public function removeTempImg($index){
 
+        array_splice($this->photos, $index,1);
+    }
     public function clearForm(){
         $this->title = '';
         $this->body = '';
