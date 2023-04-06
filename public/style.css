@@ -42,3 +42,6 @@
 .box-img-temp:hover i{
    display: block;
 }
+.mywrapper{
+    margin: 10vh auto;
+}

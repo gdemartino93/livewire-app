@@ -1,5 +1,15 @@
-<div class="container">
+<div class="container mywrapper">
     <div class="row">   
+        @if (session()->has('message'))
+
+            <div class="alert alert-success">
+
+                {{ session('message') }}
+
+            </div>
+
+        @endif
+        asd
         <form wire:submit.prevent='createPost' action="" class="col-12 col-md-8 col-lg-6 mx-auto" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Inserisci il titolo(max 10 caratteri)</label>
@@ -24,15 +34,17 @@
             <div class="mb-3">
                 <label for="formFile" class="form-label">Carica le foto</label>
                 <input wire:model='photos' class="form-control" type="file" id="formFile" multiple>
-                @if (count($photos) > 0)
-                <div class="box">
-                    @foreach ($photos as $photo)
-                    <div class="box-img-temp">
-                        <img src="{{ $photo -> temporaryUrl() }}" class="_thumbnail" width="100%">
-                        <i class="fa-regular fa-circle-xmark" wire:click.prevent="removeTempImg({{ $loop -> index }})"></i>
+                @if ($photos)                      
+                    @if (count($photos) > 0)
+                    <div class="box">
+                        @foreach ($photos as $photo)
+                        <div class="box-img-temp">
+                            <img src="{{ $photo -> temporaryUrl() }}" class="_thumbnail" width="100%">
+                            <i class="fa-regular fa-circle-xmark" wire:click.prevent="removeTempImg({{ $loop -> index }})"></i>
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
+                    @endif
                 @endif
 
 

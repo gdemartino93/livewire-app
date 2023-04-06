@@ -18,24 +18,28 @@ class Posts extends Component
         $this->validate([
             'title' => 'required|min:1|max:10',
             'body' => 'required',
-            'photos.*' => 'image|max:1024'
+            'photos.*' => 'image|max:1024|nullable'
         ],[
             'body.required' => 'Il testo è obbligatorio',
             'title.required' => 'Il titolo è obbligatorio',
         ]);
 
-        foreach($this->photos as $photo){
-            $photo -> store('images');
-           
-        };
+        if($this->photos)
+        {
+            foreach($this->photos as $photo){
+               return  $photo -> store('images');  
+            };
+        }
+
 
         Post::create([
             'title' => $this->title,
             'body' => $this->body,
             'color' => $this->color,
-            'photos' => $photo
+            'photos' => $this->photos ?: null
         ]);
         $this->clearForm();
+        session()->flash('message', 'Post successfully updated.');
     }
 
     public function deletePost($id){
